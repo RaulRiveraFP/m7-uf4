@@ -14,7 +14,7 @@ class CardController extends Controller
     {
         $request->validate([
             'nombre' => 'required|string|max:100',
-            'url_imagen' => 'required|url',
+            'url_imagen' => 'required|string',
             'category_id' => 'nullable|exists:categories,id',
         ]);
 
