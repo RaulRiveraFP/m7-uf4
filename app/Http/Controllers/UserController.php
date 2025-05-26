@@ -51,4 +51,18 @@ class UserController extends Controller
         $user->delete();
         return response()->json(['message' => 'Usuari eliminat correctament']);
     }
+
+        public function getUserPets($id)
+    {
+        $user = User::with('pets')->find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'Usuari no trobat'], 404);
+        }
+
+        return response()->json([
+            'user' => $user->only(['id', 'name', 'email']),
+            'pets' => $user->pets
+        ]);
+    }
 }

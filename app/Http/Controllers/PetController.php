@@ -84,4 +84,7 @@ class PetController extends Controller
 
         return response()->json(['message' => 'Mascota eliminada correctament'], 200);
     }
+
+
+
 }
