@@ -33,7 +33,6 @@ Route::middleware(['isUserAuth'])->group(function () {
     Route::delete('/categories/{category}', [CategoryController::class, 'destroy']);
     Route::post('/cards', [CardController::class, 'store']);
     Route::get('/cards/category/{categoryId}', [CategoryController::class, 'getByCategory']);
-    Route::post('/cards', [CardController::class, 'store']);
     Route::get('/my-cards', [CardController::class, 'myCards']);
     Route::get('/public-cards', [CardController::class, 'publicCards']);
     Route::delete('/cards/{card}', [CardController::class, 'destroy']);
