@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CardController extends Controller
 {
+    //función principal
     public function store(Request $request)
     {
         $request->validate([
