@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,7 +20,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
-        'role'
+        'role',
     ];
 
     /**
@@ -35,20 +34,10 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
      * @return array<string, string>
      */
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
-
     protected function casts(): array
     {
         return [
@@ -57,9 +46,27 @@ class User extends Authenticatable implements JWTSubject
         ];
     }
 
-    public function cards()
+    /**
+     * JWT identifier
+     */
+    public function getJWTIdentifier()
     {
-        return $this->hasMany(Card::class);
+        return $this->getKey();
     }
 
+    /**
+     * JWT custom claims
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
+    /**
+     * Relació: un usuari pot tenir moltes mascotes
+     */
+    public function pets()
+    {
+        return $this->hasMany(Pet::class);
+    }
 }
