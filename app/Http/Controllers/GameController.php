@@ -11,14 +11,14 @@ class GameController extends Controller
     // 1. Llistar les partides de l'usuari autenticat
     public function index()
     {
-        $userId = Auth::id();
-        $games = Game::where('user_id', $userId)->get();
-
+        $games = Game::all(); // Obtiene todas las partidas
+    
         return response()->json([
-            'message' => 'Llistat de partides',
+            'message' => 'Llistat de totes les partides',
             'data' => $games
         ], 200);
     }
+
 
     // 2. Crear una nova partida
     public function store(Request $request)
